@@ -1,16 +1,7 @@
 import React, { useEffect, useState } from 'react';
 
-//component to render transaction rewards points
-const TransactionList = () => {
-  const [transactions, setTransactions] = useState([]); //state to set transactions
-  const [loading, setLoading] = useState(true); //state to set data loading 
-  const [error, setError] = useState(null); //state to set errors
-  const [rewardSummary, setRewardSummary] = useState({}); //state to set reward summary
-
-  const monthList = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-
   //function to calculate reward points for each trnasaction
-  const calculateRewardPoints = (amount) => {
+export const calculateRewardPoints = (amount) => {
     let points = 0;
     if (amount > 100) {
       points += (amount - 100) * 2; //2 points for every dollar over 100
@@ -21,6 +12,15 @@ const TransactionList = () => {
 
     return points;
   }
+
+//component to render transaction rewards points
+const TransactionList = () => {
+  const [transactions, setTransactions] = useState([]); //state to set transactions
+  const [loading, setLoading] = useState(true); //state to set data loading 
+  const [error, setError] = useState(null); //state to set errors
+  const [rewardSummary, setRewardSummary] = useState({}); //state to set reward summary
+
+  const monthList = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 
   //useEffect to perform side effects in our component
   useEffect(() => {
